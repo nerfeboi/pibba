@@ -16,7 +16,7 @@ pipeline {
        stage("Code Quality - Sonarqube"){
            steps{
                withSonarQubeEnv('Sonarqube') {
-                   sh "mvn -Dsonar.projectKey=pibfe sonar:sonar"
+                   sh "mvn -Dsonar.projectKey=pibba-master sonar:sonar"
                }              
            }
        }
