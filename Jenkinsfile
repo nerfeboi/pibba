@@ -27,6 +27,7 @@ node{
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
+   
    stage('Code Quality - Sonarqube') {
       echo "Final Branch Name: ${FINAL_BRANCH}"
       echo "Change ID: ${env.CHANGE_ID}"
