@@ -23,7 +23,7 @@ node{
      
    }
    stage('Build') {
-      sh "mvn -Dmaven.test.failure.ignore clean package"
+      sh "mvn -Dmaven.test.failure.ignore clean compile package"
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
