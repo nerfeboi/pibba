@@ -1,5 +1,6 @@
 GITHUB_REPO="pibba"
 GITHUB_PROJECT = "https://github.com/nerfeboi/" + GITHUB_REPO + ".git"
+
 node{
    // Stages
    stage('Init'){
