@@ -15,6 +15,7 @@ pipeline {
                 archive 'target/*.jar'
            }
        }
+      
        stage('Code Quality - Sonarqube'){
            steps{
                withSonarQubeEnv('Sonarqube') {
