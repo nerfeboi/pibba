@@ -5,17 +5,19 @@ pipeline {
     } 
    stages{
       stage('Init'){
-         script{
-            if (env.BRANCH_NAME.startsWith('PR')) {
-               echo "Branch Name: ${env.BRANCH_NAME}"
-               echo "Change Branch Name: ${env.CHANGE_BRANCH}"
-               FINAL_BRANCH = env.CHANGE_BRANCH
-            }else{
-               FINAL_BRANCH = env.GIT_BRANCH
+         stpes{
+            script{
+               if (env.BRANCH_NAME.startsWith('PR')) {
+                  echo "Branch Name: ${env.BRANCH_NAME}"
+                  echo "Change Branch Name: ${env.CHANGE_BRANCH}"
+                  FINAL_BRANCH = env.CHANGE_BRANCH
+               }else{
+                  FINAL_BRANCH = env.GIT_BRANCH
+               }
+               echo "Final Branch Name: ${FINAL_BRANCH}"
+               echo "Change ID: ${env.CHANGE_ID}"
+               git branch:"${FINAL_BRANCH}"
             }
-            echo "Final Branch Name: ${FINAL_BRANCH}"
-            echo "Change ID: ${env.CHANGE_ID}"
-            git branch:"${FINAL_BRANCH}"
          }
       }
        stage('Build') {
