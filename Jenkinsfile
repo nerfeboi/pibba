@@ -10,7 +10,7 @@ node{
          echo "Change Branch Name: ${env.CHANGE_BRANCH}"
          //FINAL_BRANCH = env.CHANGE_BRANCH + "-" + env.BRANCH_NAME
          FINAL_BRANCH = env.CHANGE_BRANCH
-         git fetch --no-tags ${GITHUB_PROJECT} +refs/heads/master:refs/remotes/origin/master
+         sh "git fetch --no-tags ${GITHUB_PROJECT} +refs/heads/master:refs/remotes/origin/master"
       }else{
          echo "BRANCH_NAME: ${env.BRANCH_NAME}"
          FINAL_BRANCH = env.BRANCH_NAME
