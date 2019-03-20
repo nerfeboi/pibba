@@ -4,7 +4,7 @@ pipeline {
         string(name: 'FINAL_BRANCH', defaultValue: '')
     } 
    stages{
-      stage{
+      stage('Init'){
          script{
             if (env.BRANCH_NAME.startsWith('PR')) {
                echo "Branch Name: ${env.BRANCH_NAME}"
