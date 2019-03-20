@@ -1,6 +1,6 @@
 GITHUB_REPO="pibba"
 GITHUB_PROJECT = "https://github.com/nerfeboi/" + GITHUB_REPO + ".git"
-FINAL_BRANCH="env.GIT_BRANCH: " + env.BRANCH_NAME
+
 node{
    // Stages
    stage('Init'){
