@@ -15,7 +15,6 @@ node{
          echo "BRANCH_NAME: ${env.BRANCH_NAME}"
          FINAL_BRANCH = env.BRANCH_NAME
           echo "FINAL_BRANCH: ${BRANCH_NAME}" 
-          //git branch:"${FINAL_BRANCH}"//, url:GITHUB_PROJECT
          
       }      
    }
