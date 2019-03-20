@@ -1,6 +1,6 @@
 GITHUB_REPO="pibba"
 GITHUB_PROJECT = "https://github.com/nerfeboi/" + GITHUB_REPO + ".git"
-FINAL_BRANCH="env.GIT_BRANCH: " + env.GIT_BRANCH
+FINAL_BRANCH="env.GIT_BRANCH: " + env.BRANCH_NAME
 node{
    // Stages
    stage('Init'){
@@ -17,7 +17,7 @@ node{
    }
    stage ('Retrieve all branch from github') {
       echo GITHUB_PROJECT
-      git branch:"${FINAL_BRANCH}", url:GITHUB_PROJECT
+      //git branch:"${FINAL_BRANCH}", url:GITHUB_PROJECT
       sh "echo Sonar Project Key: ${env.BRANCH_NAME}"
    }
    stage('Build') {
@@ -28,14 +28,6 @@ node{
       archive 'target/*.jar'
    }
    stage('Code Quality - Sonarqube') {
-      if (env.BRANCH_NAME.startsWith('PR')) {
-         echo "Branch Name: ${env.BRANCH_NAME}"
-         echo "Change Branch Name: ${env.CHANGE_BRANCH}"
-         //FINAL_BRANCH = env.CHANGE_BRANCH + "-" + env.BRANCH_NAME
-         FINAL_BRANCH = env.CHANGE_BRANCH
-      }else{
-         FINAL_BRANCH = env.GIT_BRANCH
-      }
       echo "Final Branch Name: ${FINAL_BRANCH}"
       echo "Change ID: ${env.CHANGE_ID}"
 
