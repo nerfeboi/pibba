@@ -19,7 +19,6 @@ node{
    }
    stage ('Retrieve all branch from github') {
       echo GITHUB_PROJECT
-     
    }
    stage('Build') {
       sh "mvn -Dmaven.test.failure.ignore clean package"
