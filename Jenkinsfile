@@ -17,7 +17,7 @@ node{
           echo "FINAL_BRANCH: ${BRANCH_NAME}" 
       }      
       sh "git fetch --all"
-      sh "git branch -D master"
+      //sh "git branch -D master"
       sh "git rev-parse origin/master"
    }
    stage ('Retrieve all branch from github') {
