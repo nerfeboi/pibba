@@ -10,15 +10,14 @@ node{
          //FINAL_BRANCH = env.CHANGE_BRANCH + "-" + env.BRANCH_NAME
          FINAL_BRANCH = env.CHANGE_BRANCH
       }else{
-         echo "GIT_BRANCH: ${env.GIT_BRANCH}"
-         //FINAL_BRANCH = env.GIT_BRANCH
-          echo "FINAL_BRANCH: ${FINAL_BRANCH}" 
+         echo "BRANCH_NAME: ${env.BRANCH_NAME}"
+         FINAL_BRANCH = env.BRANCH_NAME
+          echo "FINAL_BRANCH: ${BRANCH_NAME}" 
       }      
    }
    stage ('Retrieve all branch from github') {
       echo GITHUB_PROJECT
-      //git branch:"${FINAL_BRANCH}", url:GITHUB_PROJECT
-      sh "echo Sonar Project Key: ${env.BRANCH_NAME}"
+      git branch:"${FINAL_BRANCH}"//, url:GITHUB_PROJECT
    }
    stage('Build') {
       sh "mvn -Dmaven.test.failure.ignore clean package"
@@ -30,7 +29,6 @@ node{
    stage('Code Quality - Sonarqube') {
       echo "Final Branch Name: ${FINAL_BRANCH}"
       echo "Change ID: ${env.CHANGE_ID}"
-
        if (env.BRANCH_NAME.startsWith('PR')) {
             sh "mvn -Dsonar.projectKey='${FINAL_BRANCH}-sit-${env.BRANCH_NAME}' -Dsonar.projectName='${FINAL_BRANCH}-sit-${env.BRANCH_NAME}' sonar:sonar"
             sh "mvn -Dsonar.projectKey='${FINAL_BRANCH}-uat-${env.BRANCH_NAME}' -Dsonar.projectName='${FINAL_BRANCH}-uat-${env.BRANCH_NAME}' sonar:sonar"                                            
