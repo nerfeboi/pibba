@@ -13,7 +13,7 @@ public class Hello {
 
     private int times = 1;
     
-    private int times = 1;    
+    cprivate int times = 1;    
 
     /**
      * Set how many times "Hello!" should be said.
