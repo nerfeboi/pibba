@@ -13,9 +13,9 @@ node{
          FINAL_BRANCH = env.GIT_BRANCH
       }      
    }
-   stage ("Retrieve all branch from github") {
+   stage ('Retrieve all branch from github') {
       echo GITHUB_PROJECT
-      git branch:"${FINAL_BRANCH}"//, url:GITHUB_PROJECT
+      git branch:"${FINAL_BRANCH}", url:GITHUB_PROJECT
       sh "echo Sonar Project Key: ${env.BRANCH_NAME}"
    }
    stage('Build') {
