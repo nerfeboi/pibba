@@ -10,7 +10,9 @@ node{
          //FINAL_BRANCH = env.CHANGE_BRANCH + "-" + env.BRANCH_NAME
          FINAL_BRANCH = env.CHANGE_BRANCH
       }else{
+         echo "GIT_BRANCH: ${env.GIT_BRANCH}"
          FINAL_BRANCH = env.GIT_BRANCH
+          echo "FINAL_BRANCH: ${FINAL_BRANCH}" 
       }      
    }
    stage ('Retrieve all branch from github') {
