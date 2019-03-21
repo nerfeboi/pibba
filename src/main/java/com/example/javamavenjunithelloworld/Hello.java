@@ -12,8 +12,6 @@ public class Hello {
     public static final int MAXIMUM_AMOUNT_OF_TIMES = 20;
 
     private int times = 1;
-    
-    cprivate int times = 1;    
 
     /**
      * Set how many times "Hello!" should be said.
