@@ -1,1 +1,2 @@
 firewall-cmd --list-ports
+firewall-cmd --list-ports
